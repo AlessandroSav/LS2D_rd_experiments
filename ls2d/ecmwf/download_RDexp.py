@@ -88,7 +88,7 @@ def _retrieve_from_MARS(request, settings, nc_dir, nc_file, qos):
     execute('sbatch {}'.format(slurm_job))
 
 
-def _download_era5_file(settings):
+def _download_RDexp_file(settings):
     """
     Download ERA5 analysis or forecasts on surface, model or pressure levels
     Requested parameters are hardcoded and chosen for the specific use of LS2D
@@ -312,7 +312,7 @@ def _download_era5_file(settings):
     return finished
 
 
-def download_era5(settings, exit_when_waiting=True):
+def download_RDexp(settings, exit_when_waiting=True):
     """
     Download all required ERA5 fields for an experiment
     between `starttime` and `endtime`
@@ -387,7 +387,7 @@ def download_era5(settings, exit_when_waiting=True):
 
     finished = True
     for req in download_queue:
-        if not _download_era5_file(req):
+        if not _download_RDexp_file(req):
             finished = False
 
     if not finished:
